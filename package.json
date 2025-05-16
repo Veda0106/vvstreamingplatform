@@ -2,6 +2,9 @@
   "name": "cloneyoutube",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "dev:all": "concurrently \"bun run dev:webhook\" \"bun run dev \" ",
     "dev:webhook": "ngrok http --url=multiply-alive-grackle.ngrok-free.app 3000",
