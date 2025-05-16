@@ -1,64 +1,76 @@
-"use client"
-import Link from "next/link"
-import {SidebarGroup,SidebarGroupContent,SidebarMenu,SidebarMenuButton,SidebarMenuItem} from "@/components/ui/sidebar"
-import {HistoryIcon,ListVideoIcon,ThumbsUpIcon} from "lucide-react"
+ "use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useAuth, useClerk } from "@clerk/nextjs";
-const items=[
+import { HistoryIcon, ListVideoIcon, ThumbsUpIcon } from "lucide-react";
 
-     
-    {
-        title:"History",
-        url:"/playlist/history",
-        icon: HistoryIcon ,
-        auth:true
-    },
-    {title:"Liked Videos",
-        url:"/playlist/liked",
-        icon:ThumbsUpIcon,
-        auth:true,
-    },
+import { 
+  SidebarGroup, 
+  SidebarGroupContent, 
+  SidebarGroupLabel, 
+  SidebarMenu, 
+  SidebarMenuButton, 
+  SidebarMenuItem
+} from "@/components/ui/sidebar";
 
-    {title:"All playlist",
-        url:"/playlists",
-        icon:ListVideoIcon,
-        auth:true
-    },
-]
-export const PersonalSection=()=>{
+const items = [
+  {
+    title: "History",
+    url: "/playlists/history",
+    icon: HistoryIcon,
+    auth: true,
+  },
+  {
+    title: "Liked videos",
+    url: "/playlists/liked",
+    icon: ThumbsUpIcon,
+    auth: true,
+  },
+  {
+    title: "All playlists",
+    url: "/playlists",
+    icon: ListVideoIcon,
+    auth: true,
+  },
+];
 
-    const clerk = useClerk(); // ✅ FIXED
+export const PersonalSection = () => {
+  const clerk = useClerk();
   const { isSignedIn } = useAuth();
-    return(
+  const pathname = usePathname();
 
-        
-        <SidebarGroup>
-            <SidebarGroupContent>
-
-                <SidebarMenu>
-                  {items.map((item)=>(
-                    <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton tooltip={item.title} asChild isActive={false}// TODO:Change to look at current pathname
-                        onClick={(e) => {
-                            if (!isSignedIn && item.auth) {
-                              e.preventDefault();
-                              clerk.openSignIn?.(); // ✅ Ensure the function exists before calling
-                            }
-                          }}
-                         // TODO:Do something on cLick
-                         >
-
-                     
-                      <Link href={item.url} className="flex items-center gap-4">
-                        <item.icon className="w-5 h-5" /> {/* Self-closing icon */}
-                        <span className="text-sm" >{item.title}</span>
-                      </Link>
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  ))}
-                </SidebarMenu>
-            </SidebarGroupContent>
-        </SidebarGroup>
-        
-    )
-    
+  return (
+    <SidebarGroup>
+      <SidebarGroupLabel>You</SidebarGroupLabel>
+      <SidebarGroupContent>
+        <SidebarMenu>
+          {items.map((item) => (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton
+                tooltip={item.title}
+                asChild
+                isActive={pathname === item.url}
+                onClick={(e) => {
+                  if (!isSignedIn && item.auth) {
+                    e.preventDefault();
+                    return clerk.openSignIn();
+                  }
+                }}
+              >
+                <Link
+                  prefetch
+                  href={item.url}
+                  className="flex items-center gap-4"
+                  >
+                  <item.icon />
+                  <span className="text-sm">{item.title}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarGroupContent>
+    </SidebarGroup>
+  );
 }
