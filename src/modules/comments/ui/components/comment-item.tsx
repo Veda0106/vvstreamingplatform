@@ -184,7 +184,7 @@ export const CommentItem = ({
       {comment.replyCount > 0 && variant === "comment" && (
         <div className="pl-14">
           <Button
-            variant="tertiary"
+            variant="ghost"
             size="sm"
             onClick={() => setIsRepliesOpen((current) => !current)}
           >
