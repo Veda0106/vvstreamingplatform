@@ -1,0 +1,7 @@
+[build]
+  # point to your build command and output directory
+  command   = "next build"
+  publish   = ".next"
+
+  # force Netlify to install Node 18
+  node_version = "18.16.0"
