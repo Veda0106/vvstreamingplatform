@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { VideoInfo, VideoInfoSkeleton } from "./video-info";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
-import { VideoGetManyOutput } from "../../types";
+import { VideoGetManyOutput } from "../../type";
 
 interface VideoGridCardProps {
   data: VideoGetManyOutput["items"][number];
