@@ -8,7 +8,7 @@ import { UserInfo } from "@/modules/users/ui/components/user-info";
 import { useSubscription } from "@/modules/subscriptions/hooks/use-subscriptions";
 import { SubscriptionButton } from "@/modules/subscriptions/ui/components/subscription-button";
 
-import { VideoGetOneOutput } from "../../types";
+import { VideoGetOneOutput } from "../../type";
 
 interface VideoOwnerProps {
   user: VideoGetOneOutput["user"];

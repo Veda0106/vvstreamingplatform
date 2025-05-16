@@ -8,7 +8,7 @@ import { VideoOwner } from "./video-owner";
 import { VideoReactions } from "./video-reactions";
 import { VideoDescription } from "./video-description";
 
-import { VideoGetOneOutput } from "../../types";
+import { VideoGetOneOutput } from "../../type";
 
 interface VideoTopRowProps {
   video: VideoGetOneOutput;

@@ -8,7 +8,7 @@ import { trpc } from "@/trpc/client";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-import { VideoGetOneOutput } from "../../types";
+import { VideoGetOneOutput } from "../../type";
 
 interface VideoReactionsProps {
   videoId: string;
