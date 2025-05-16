@@ -47,7 +47,7 @@ export const CommentReplies = ({
       </div>
       {hasNextPage && (
         <Button
-          variant="tertiary"
+          variant="ghost"
           size="sm"
           onClick={() => fetchNextPage()}
           disabled={isFetchingNextPage}
