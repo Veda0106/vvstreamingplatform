@@ -18,7 +18,7 @@ import {
 
 import { CommentForm } from "./comment-form";
 import { CommentReplies } from "./comment-replies";
-import { CommentsGetManyOutput } from "../../types";
+import { CommentsGetManyOutput } from "../../type";
 
 interface CommentItemProps {
   comment: CommentsGetManyOutput["items"][number];
