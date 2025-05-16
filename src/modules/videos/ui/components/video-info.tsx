@@ -8,7 +8,7 @@ import { UserAvatar } from "@/components/ui/user-avatar";
 import { UserInfo } from "@/modules/users/ui/components/user-info";
 
 import { VideoMenu } from "./video-menu";
-import { VideoGetManyOutput } from "../../types";
+import { VideoGetManyOutput } from "../../type";
 
 interface VideoInfoProps {
   data: VideoGetManyOutput["items"][number];
