@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import { Button, ButtonProps } from "@/components/ui/button";
-
+import { Button} from "@/components/ui/button";
+import { ButtonProps } from "@/components/ui/button";
 interface SubscriptionButtonProps {
   onClick: ButtonProps["onClick"];
   disabled: boolean;
